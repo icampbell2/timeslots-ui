@@ -18,12 +18,12 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "watch-css": "npm run build-css -- --watch --recursive",
     "start-ts": "react-scripts-ts start",
     "build-ts": "react-scripts-ts build",
-    "start": "npm run test && npm-run-all -p watch-css start-ts",
-    "build": "npm run test && npm-run-all build-css build-ts",
+    "start": "npm run build-css && npm run test && npm-run-all -p watch-css start-ts",
+    "build": "npm run build-css && npm run test && npm run build-ts",
     "test": "react-scripts-ts test --env=jsdom --coverage",
-    "eject": "npm run test && react-scripts-ts eject"
+    "eject": "npm run build-css && npm run test && react-scripts-ts eject"
   }
 }
