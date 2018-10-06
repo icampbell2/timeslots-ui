@@ -15,9 +15,9 @@
     "react-dom": "^16.5.2"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "start": "npm run test && react-scripts-ts start",
+    "build": "npm run test && react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom --coverage",
+    "eject": "npm run test && react-scripts-ts eject"
   }
 }
