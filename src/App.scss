@@ -2,7 +2,11 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-}
-main {
-  flex: 1;
+  background-image: linear-gradient(gainsboro, gray);
+
+  main {
+    flex: 1;
+    background-image: url("./images/bright-squares.png");
+    background-repeat: repeat;
+  }
 }
