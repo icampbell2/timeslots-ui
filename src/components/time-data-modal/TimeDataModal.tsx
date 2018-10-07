@@ -7,6 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
 import * as React from 'react';
 import ITimeSlotData from '../../models/ITimeSlotData';
+import StringUtils from '../../util/StringUtils';
 
 enum ButtonLabels {
   REGISTER = "Register",
@@ -146,7 +147,8 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
   }
 
   protected handleClose(): void {
-    if (this.state.timeSlotData.name && this.state.timeSlotData.phoneNumber) {
+    if (!StringUtils.isBlank(this.state.timeSlotData.name)
+        && !StringUtils.isBlank(this.state.timeSlotData.phoneNumber)) {
       this.currentTimeSlotData = this.state.timeSlotData;
       this.buttonLabel = ButtonLabels.UPDATE;
       this.setState({
