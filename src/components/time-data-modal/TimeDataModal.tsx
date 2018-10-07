@@ -149,12 +149,16 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
   protected handleClose(): void {
     if (!StringUtils.isBlank(this.state.timeSlotData.name)
         && !StringUtils.isBlank(this.state.timeSlotData.phoneNumber)) {
-      this.currentTimeSlotData = this.state.timeSlotData;
-      this.buttonLabel = ButtonLabels.UPDATE;
       this.setState({
         hasData: true,
-        open: false
+        open: false,
+        timeSlotData: {
+          name: this.state.timeSlotData.name.trim(),
+          phoneNumber: this.state.timeSlotData.phoneNumber.trim()
+        }
       });
+      this.currentTimeSlotData = this.state.timeSlotData;
+      this.buttonLabel = ButtonLabels.UPDATE;
       this.onDataEntry(this.state.timeSlotData);
     }
   }
