@@ -1,6 +1,10 @@
 #footer {
-  text-align: center;
+  display: table;
+  margin: 0 auto;
 
+  .column {
+    display: table-cell;
+  }
   #footer-title {
     font-size: 1em;
   }
