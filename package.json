@@ -4,7 +4,6 @@
   "private": true,
   "devDependencies": {
     "@material-ui/core": "^3.1.2",
-    "@material-ui/icons": "^3.0.1",
     "@types/jest": "^23.3.3",
     "@types/node": "^10.11.4",
     "@types/react": "^16.4.15",
@@ -25,9 +24,9 @@
     "watch-css": "npm run build-css -- --watch --recursive",
     "start-ts": "react-scripts-ts start",
     "build-ts": "react-scripts-ts build",
-    "start": "npm run build-css && npm run test && npm-run-all -p watch-css start-ts",
-    "build": "npm run build-css && npm run test && npm run build-ts",
-    "test": "react-scripts-ts test --env=jsdom --coverage",
-    "eject": "npm run build-css && npm run test && react-scripts-ts eject"
+    "start": "npm run test && npm-run-all -p watch-css start-ts",
+    "build": "npm run test && npm run build-ts",
+    "test": "npm run build-css && react-scripts-ts test --env=jsdom --coverage",
+    "eject": "npm run test && react-scripts-ts eject"
   }
 }
