@@ -3,6 +3,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import * as React from 'react';
 import ITimeSlot from '../../models/ITimeSlot';
 import ITimeSlotData from '../../models/ITimeSlotData';
+import StringUtils from '../../util/StringUtils';
 import TimeDataModal from '../time-data-modal/TimeDataModal';
 import './TimeListItem.css';
 
@@ -46,7 +47,9 @@ class TimeListItem extends React.Component<ITimeListItemProps, any> {
 
   protected onDataEntry(timeSlotData: ITimeSlotData): void {
     this.setState({
-      hasData: timeSlotData && timeSlotData.name && timeSlotData.phoneNumber,
+      hasData: timeSlotData
+          && !StringUtils.isBlank(timeSlotData.name)
+          && !StringUtils.isBlank(timeSlotData.phoneNumber),
       isSelected: false
     });
   }
