@@ -22,7 +22,7 @@ class TimeList extends React.Component {
     );
   }
 
-  protected getTimeSlots(): ITimeSlot[] {
+  public getTimeSlots(): ITimeSlot[] {
     const timeslots: ITimeSlot[] = [];
     for (let i: number = 9, len: number = 5 + 12; i < len; i++) {
       timeslots.push({

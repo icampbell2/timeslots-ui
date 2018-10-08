@@ -7,3 +7,8 @@ it('renders without crashing', () => {
   ReactDOM.render(<Footer />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
+it('should get year', () => {
+  const footer: Footer = new Footer({});
+  expect(footer.getYear()).toEqual(new Date().getFullYear());
+});

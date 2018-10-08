@@ -13,8 +13,8 @@ interface ITimeListItemProps extends React.Props<ITimeSlot> {
 
 class TimeListItem extends React.Component<ITimeListItemProps, any> {
 
-  private static AM: string = "am";
-  private static PM: string = "pm";
+  public static AM: string = "am";
+  public static PM: string = "pm";
   private timeslot: ITimeSlot;
 
   constructor(props: { timeslot: ITimeSlot }) {
@@ -39,6 +39,24 @@ class TimeListItem extends React.Component<ITimeListItemProps, any> {
     );
   }
 
+  public getTime(hour: number): string {
+    if (hour < 9 || hour > 17) {
+      throw new RangeError(`${hour} is out of range`);
+    }
+    if (hour === 12) {
+      return `${hour} ${TimeListItem.PM}`;
+    }
+    return hour < 12
+      ? `${hour} ${TimeListItem.AM}`
+      : `${hour - 12} ${TimeListItem.PM}`;
+  }
+
+  public getValue(): string {
+    return this.timeslot
+      ? `${this.getTime(this.timeslot.start)} - ${this.getTime(this.timeslot.end)}`
+      : '';
+  }
+
   protected select(): void {
     this.setState({
       isSelected: true
@@ -52,24 +70,6 @@ class TimeListItem extends React.Component<ITimeListItemProps, any> {
           && !StringUtils.isBlank(timeSlotData.phoneNumber),
       isSelected: false
     });
-  }
-
-  protected getTime(hour: number): string {
-    if (hour < 9 || hour > 17) {
-      throw new RangeError(`${hour} is out of range`);
-    }
-    if (hour === 12) {
-      return `${hour} ${TimeListItem.PM}`;
-    }
-    return hour < 12
-      ? `${hour} ${TimeListItem.AM}`
-      : `${hour - 12} ${TimeListItem.PM}`;
-  }
-
-  protected getValue(): string {
-    return this.timeslot
-      ? `${this.getTime(this.timeslot.start)} - ${this.getTime(this.timeslot.end)}`
-      : '';
   }
 }
 
