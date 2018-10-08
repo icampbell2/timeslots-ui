@@ -10,5 +10,6 @@ it('renders without crashing', () => {
 
 it('should get year', () => {
   const footer: Footer = new Footer({});
+  // this might fail on New Year's Eve!
   expect(footer.getYear()).toEqual(new Date().getFullYear());
 });
