@@ -28,7 +28,7 @@ class Footer extends React.Component {
       </AppBar>
     );
   }
-  protected getYear(): number {
+  public getYear(): number {
     return new Date().getFullYear();
   }
 }
