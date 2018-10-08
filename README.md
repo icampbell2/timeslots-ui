@@ -9,7 +9,15 @@ This is a front-end application for a coding assessment, meeting these requireme
 
 ---
 
-## Running the Application
+## Table of Contents
+- [Running the Application](#running-the-application)
+- [Dependencies Used](#dependencies-used)
+- [Available Commands](#available-commands)
+- [How this Application was Created](#how-this-application-was-created)
+
+---
+
+## <a name="running-the-application"></a>Running the Application
 
 ```
 npm install
@@ -18,7 +26,7 @@ npm start
 
 ---
 
-## Dependencies Used
+## <a name="dependencies-used"></a>Dependencies Used
 
 | ReactJS | TypeScript | SASS | Design | Validation |
 | ------- | ---------- | ---- | ------ | ---------- |
@@ -31,7 +39,7 @@ npm start
 
 ---
 
-## Available Commands
+## <a name="available-commands"></a>Available Commands
 
 ### `npm start`
 
@@ -66,7 +74,7 @@ This command executes these commands in this order:
 
 ---
 
-## How this Application was Created
+## <a name="how-this-application-was-created"></a>How this Application was Created
 
 This application was created following this [`react-scripts-ts` documentation](https://github.com/wmonk/create-react-app-typescript "https://github.com/wmonk/create-react-app-typescript"), using this command:
 
