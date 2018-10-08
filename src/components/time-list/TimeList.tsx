@@ -1,15 +1,33 @@
 import List from '@material-ui/core/List';
 import * as React from 'react';
+import { connect } from 'react-redux';
 import ITimeSlot from '../../models/ITimeSlot';
 import TimeListItem from '../time-list-item/TimeListItem';
 import './TimeList.css';
+
+/**
+ * The props input definition for the component.
+ *
+ * @author Ian Campbell
+ */
+interface ITimeListProps extends React.Props<ITimeSlot[]> {
+  timeSlots: ITimeSlot[]
+}
 
 /**
  * The time list component, used to represent a list of time slots.
  *
  * @author Ian Campbell
  */
-class TimeList extends React.Component {
+export class TimeList extends React.Component<ITimeListProps, any> {
+
+  private timeSlots: ITimeSlot[];
+
+  constructor(props: any) {
+    super(props);
+    this.timeSlots = props.timeSlots;
+    this.getTimeListItems.bind(this);
+  }
 
   /**
    * Render the component.
@@ -20,33 +38,24 @@ class TimeList extends React.Component {
     return (
       <div id="time-list">
         <List>
-          {
-            this.getTimeSlots().map((timeslot: ITimeSlot, index: number) => {
-              return (
-                <TimeListItem timeslot={timeslot} key={index} />
-              );
-            })
-          }
+          {this.getTimeListItems()}
         </List>
       </div>
     );
   }
 
-  /**
-   * Get an array of time slots.
-   *
-   * @returns an array of time slots, from military time hours 9 to 17 inclusive
-   */
-  public getTimeSlots(): ITimeSlot[] {
-    const timeslots: ITimeSlot[] = [];
-    for (let i: number = 9, len: number = 5 + 12; i < len; i++) {
-      timeslots.push({
-        end: i + 1,
-        start: i
-      });
-    }
-    return timeslots;
+  public getTimeListItems(): JSX.Element[] {
+    return this.timeSlots.map((timeSlot: ITimeSlot, index: number) => {
+        return (
+          <TimeListItem timeslot={timeSlot} key={index} />
+        );
+    });
   }
 }
 
-export default TimeList;
+const mapStateToProps = (state: any): ITimeListProps => {
+  return {
+    timeSlots: state.timeSlots
+  };
+};
+export default connect(mapStateToProps)(TimeList);
