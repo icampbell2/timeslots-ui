@@ -7,6 +7,9 @@ import Header from './components/header/Header';
 import About from './pages/about/About';
 import Home from './pages/home/Home';
 
+/**
+ * The Material UI theme to be used.
+ */
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -23,6 +26,12 @@ const theme = createMuiTheme({
     },
   }
 });
+
+/**
+ * The top-level component of this application, defining the layout and routing.
+ *
+ * @author Ian Campbell
+ */
 class App extends React.Component {
   public render() {
     return (

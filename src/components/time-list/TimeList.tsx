@@ -4,8 +4,18 @@ import ITimeSlot from '../../models/ITimeSlot';
 import TimeListItem from '../time-list-item/TimeListItem';
 import './TimeList.css';
 
+/**
+ * The time list component, used to represent a list of time slots.
+ *
+ * @author Ian Campbell
+ */
 class TimeList extends React.Component {
 
+  /**
+   * Render the component.
+   *
+   * @returns the rendered component
+   */
   public render() {
     return (
       <div id="time-list">
@@ -22,6 +32,11 @@ class TimeList extends React.Component {
     );
   }
 
+  /**
+   * Get an array of time slots.
+   *
+   * @returns an array of time slots, from military time hours 9 to 17 inclusive
+   */
   public getTimeSlots(): ITimeSlot[] {
     const timeslots: ITimeSlot[] = [];
     for (let i: number = 9, len: number = 5 + 12; i < len; i++) {

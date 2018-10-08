@@ -6,7 +6,18 @@ import './Footer.css';
 
 import logo from '../../images/linkedin-logo.png';
 
+/**
+ * The footer component, used to display widgets and copyright information.
+ *
+ * @author Ian Campbell
+ */
 class Footer extends React.Component {
+
+  /**
+   * Render the component.
+   *
+   * @returns the rendered component
+   */
   public render() {
     return (
       <AppBar position="static">
@@ -28,6 +39,12 @@ class Footer extends React.Component {
       </AppBar>
     );
   }
+
+  /**
+   * Get the current year, to be displayed in a copyright message.
+   *
+   * @returns the current year
+   */
   public getYear(): number {
     return new Date().getFullYear();
   }
