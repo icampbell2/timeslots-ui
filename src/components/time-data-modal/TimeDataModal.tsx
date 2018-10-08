@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
+import PhoneNumber from 'awesome-phonenumber';
 import * as React from 'react';
 import ITimeSlotData from '../../models/ITimeSlotData';
 import StringUtils from '../../util/StringUtils';
@@ -22,12 +23,14 @@ interface ITimeListItemProps extends React.Props<any> {
 
 interface ITimeListItemState extends React.Props<any> {
   hasData: boolean,
+  helperText: string,
   open: boolean,
   timeSlotData: ITimeSlotData
 }
 
 class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemState> {
 
+  private static INVALID_FORMAT: string = 'Invalid format! Please try again.';
   private onDataEntry: (timeSlotData: ITimeSlotData) => void;
   private timeRange: string;
   private buttonLabel: string;
@@ -46,6 +49,7 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     this.buttonLabel = ButtonLabels.REGISTER;
     this.state = {
       hasData: false,
+      helperText: '',
       open: false,
       timeSlotData: {
         name: '',
@@ -89,6 +93,7 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
               type="phone"
               fullWidth={true}
               value={this.state.timeSlotData.phoneNumber}
+              helperText={this.state.helperText}
               onChange={this.handlePhoneNumberChange}/>
           </DialogContent>
           <DialogActions>
@@ -120,6 +125,7 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
 
   protected handlePhoneNumberChange(event: any): void {
     this.setState({
+      helperText: '',
       open: this.state.open,
       timeSlotData: {
         name: this.state.timeSlotData.name,
@@ -149,8 +155,15 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
   protected handleClose(): void {
     if (!StringUtils.isBlank(this.state.timeSlotData.name)
         && !StringUtils.isBlank(this.state.timeSlotData.phoneNumber)) {
+      if (!new PhoneNumber(this.state.timeSlotData.phoneNumber, 'US').isValid()) {
+        this.setState({
+          helperText: TimeDataModal.INVALID_FORMAT
+        });
+        return;
+      }
       this.setState({
         hasData: true,
+        helperText: '',
         open: false,
         timeSlotData: {
           name: this.state.timeSlotData.name.trim(),
