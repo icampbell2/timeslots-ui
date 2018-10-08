@@ -5,5 +5,7 @@
         ".vscode": true,
         "coverage": true,
         "**/*.css": true
-    }
+    },
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
 }
