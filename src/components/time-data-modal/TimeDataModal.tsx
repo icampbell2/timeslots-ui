@@ -10,17 +10,28 @@ import * as React from 'react';
 import ITimeSlotData from '../../models/ITimeSlotData';
 import StringUtils from '../../util/StringUtils';
 
+/**
+ * Used to represent the possible button labels to be displayed.
+ *
+ * @author Ian Campbell
+ */
 enum ButtonLabels {
   REGISTER = "Register",
   UNREGISTER = "Unregister",
   UPDATE = "Update"
 }
 
+/**
+ * Used to define the input props for this component.
+ */
 interface ITimeListItemProps extends React.Props<any> {
   onDataEntry: (timeSlotData: ITimeSlotData) => void,
   timeRange: string
 }
 
+/**
+ * Used to define the state for this component.
+ */
 interface ITimeListItemState extends React.Props<any> {
   hasData: boolean,
   helperText: string,
@@ -28,6 +39,11 @@ interface ITimeListItemState extends React.Props<any> {
   timeSlotData: ITimeSlotData
 }
 
+/**
+ * The time data modal component, used to display registration buttons and a form modal dialog.
+ *
+ * @author Ian Campbell
+ */
 class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemState> {
 
   private static INVALID_FORMAT: string = 'Invalid format! Please try again.';
@@ -36,6 +52,11 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
   private buttonLabel: string;
   private currentTimeSlotData: ITimeSlotData;
 
+  /**
+   * Instantiate the instance.
+   *
+   * @param props the input props passed to this component
+   */
   constructor(props: any) {
     super(props);
     this.handleUnregister = this.handleUnregister.bind(this);
@@ -59,6 +80,11 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     this.currentTimeSlotData = this.state.timeSlotData;
   }
 
+  /**
+   * Render the component.
+   *
+   * @returns the rendered component
+   */
   public render() {
     return (
       <div>
@@ -109,10 +135,20 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     );
   }
 
+  /**
+   * Get the time slot data.
+   *
+   * @returns the time slot data
+   */
   public getData(): ITimeSlotData {
     return this.state.timeSlotData;
   }
 
+  /**
+   * Handles an onChange event for the name text field.
+   *
+   * @param event the onChange event to be handled
+   */
   protected handleNameChange(event: any): void {
     this.setState({
       open: this.state.open,
@@ -123,6 +159,11 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     });
   }
 
+  /**
+   * Handles an onChange event for the phone number text field.
+   *
+   * @param event the onChange event to be handled
+   */
   protected handlePhoneNumberChange(event: any): void {
     this.setState({
       helperText: '',
@@ -134,6 +175,9 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     });
   }
 
+  /**
+   * Handle an onClick event for the un-register button.
+   */
   protected handleUnregister(): void {
     this.buttonLabel = ButtonLabels.REGISTER;
     const timeSlotData: ITimeSlotData = {
@@ -148,10 +192,16 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     this.onDataEntry(timeSlotData);
   }
 
+  /**
+   * Handle an onClick event for the register / update button.
+   */
   protected handleOpen(): void {
     this.setState({ open: true });
   }
 
+  /**
+   * Handle a dialog close, or an onClick event for the OK button.
+   */
   protected handleClose(): void {
     if (!StringUtils.isBlank(this.state.timeSlotData.name)
         && !StringUtils.isBlank(this.state.timeSlotData.phoneNumber)) {
@@ -176,6 +226,9 @@ class TimeDataModal extends React.Component<ITimeListItemProps, ITimeListItemSta
     }
   }
 
+  /**
+   * Handle an onClick event for the cancel button.
+   */
   protected handleCancel(): void {
     this.setState({
       open: false,
