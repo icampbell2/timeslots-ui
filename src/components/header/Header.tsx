@@ -5,7 +5,18 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
+/**
+ * The header component, used to display the application name and navigation.
+ *
+ * @author Ian Campbell
+ */
 class Header extends React.Component {
+
+  /**
+   * Render the component.
+   *
+   * @returns the rendered component
+   */
   public render() {
     return (
       <AppBar position="static" title="Time Slots">
