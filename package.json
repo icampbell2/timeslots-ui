@@ -4,22 +4,22 @@
   "author": "Ian Campbell",
   "private": true,
   "devDependencies": {
-    "@material-ui/core": "^3.1.2",
-    "@types/jest": "^23.3.3",
-    "@types/node": "^10.11.4",
-    "@types/react": "^16.4.15",
-    "@types/react-dom": "^16.0.8",
-    "@types/react-router-dom": "^4.3.1",
+    "@material-ui/core": "4.1.0",
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.7",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
+    "@types/react-router-dom": "4.3.3",
     "react-scripts-ts": "3.1.0",
-    "typescript": "^3.1.1"
+    "typescript": "3.5.1"
   },
   "dependencies": {
-    "awesome-phonenumber": "^2.2.6",
-    "node-sass-chokidar": "^1.3.3",
-    "npm-run-all": "^4.1.3",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-router-dom": "^4.3.1"
+    "awesome-phonenumber": "2.11.0",
+    "node-sass-chokidar": "1.3.5",
+    "npm-run-all": "4.1.5",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "5.0.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
